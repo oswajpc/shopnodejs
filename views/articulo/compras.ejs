@@ -1,0 +1,41 @@
+<%- include("../layouts/header.ejs"); %>
+
+<div class="new-products">
+  <div class="container">
+    
+    <br>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Imagen</th>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Fecha de compra</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% compras.forEach(compras => { %>
+            <tr>
+                <td style="width: 20px;text-align: center;"><img src="<%= compras.imagen %>" alt="<%= compras.nombre %>" style="width: 100px;height: 100px;border-radius: 999px;"></td>
+                <td><%= compras.nombre %></td>
+                <td><%= compras.precio %></td>
+                <td><%= compras.fecha %></td>
+                <td>
+                    <a href="http://localhost:3000/manuales/<%= compras.archivo %>" class="btn btn-warning">
+                        Descargar
+                    </a>
+
+                </td>
+
+            </tr>
+            <% })%>
+        </tbody>
+    </table>
+
+
+  </div>
+</div>
+
+
+<%- include("../layouts/footer.ejs"); %>

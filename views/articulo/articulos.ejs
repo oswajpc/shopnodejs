@@ -1,0 +1,37 @@
+<%- include("../layouts/header.ejs"); %>
+
+<div class="new-products">
+  <div class="container">
+
+    <h3>New Products</h3>
+   
+    <div class="agileinfo_new_products_grids">
+
+      <% articulo.forEach(articulo => { %>
+        <div class="col-md-3 agileinfo_new_products_grid">
+          <div class="agile_ecommerce_tab_left agileinfo_new_products_grid1">
+            <div class="hs-wrapper hs-wrapper1">
+              <img src="<%= articulo.imagen %>" alt=" " class="img-responsive" />
+
+            </div>
+            <h5><a href="/ver/<%= articulo.idart %>"><%= articulo.nombre %></a></h5>
+            <div class="simpleCart_shelfItem">
+              <p><i class="item_price"><%= articulo.precio %></i></p>
+              <form action="/comprar" method="post">
+     
+                <input type="hidden" name="idarticulo" value="<%= articulo.idart %>">
+                <input type="hidden" name="nombre" value="<%= articulo.nombre %>"> 
+                <input type="hidden" name="precio" value="<%= articulo.precio %>"> 
+                <button type="submit" class="w3ls-cart">Agregar al carrito</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      <% })%>
+      <div class="clearfix"> </div>
+    </div>
+  </div>
+</div>
+
+
+<%- include("../layouts/footer.ejs"); %>

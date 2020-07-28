@@ -1,0 +1,29 @@
+<%- include("../layouts/header.ejs"); %>
+<br><br>
+<div class="row">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <div class="register">
+                    <% if(msg){ %>
+                        <div class="alert alert-danger" role="alert">
+                            <%= msg %>
+                        </div>
+                     <% } %>
+                    <form action="/auth" method="post">			
+                        <input name="Email" placeholder="Email Address" type="text" required="">						
+                        <input name="Password" placeholder="Password" type="password" required="">										
+                        <div class="sign-up">
+                            <input type="submit" value="Ingresar"/>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+    </div>
+ 
+</div>
+
+<%- include("../layouts/footer.ejs"); %>

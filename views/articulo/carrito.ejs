@@ -1,0 +1,68 @@
+<%- include("../layouts/header.ejs"); %>
+
+
+<br><br><br>
+    <% if(msgAgregado){ %>
+        <div class="alert alert-success" role="alert">
+          <a href="#" class="alert-link">Ir</a>: <%= msgAgregado %>
+        </div>
+    <% } %>
+
+    <div class="row">
+        
+        <div class="col-md-12">
+            <div class="row">
+                
+                <div class="col-md-3"></div>
+                
+                <div class="col-md-6">
+                    <div id="w3lssbmincart" style="display: contents;">
+                        <% ordenArt.forEach(ordenArt => { %>
+                        <ul>
+                            <li class="sbmincart-item">
+                                <div class="sbmincart-details-name">
+                                    <a class="sbmincart-name"><%= ordenArt.nombre %></a>
+                                    <ul class="sbmincart-attributes"></ul>
+                                </div>
+                                <div class="sbmincart-details-remove">
+                                    <a href="/eliminar_pro/<%= ordenArt.idorden %>" class="btn-danger"> x </a>
+                                    
+                                </div>
+                                <div class="sbmincart-details-price">
+                                    <span class="sbmincart-price"><%= ordenArt.precio %></span>
+                                </div>
+                            </li>
+                        </ul>
+                        <% }) %>
+                        <div class="sbmincart-footer">
+                            <div class="sbmincart-subtotal">Total: <%= total %></div>
+                            <!-- <a href="" class="sbmincart-submit">Comprar Ahora</a> -->
+                            <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                                <input type="hidden" name="cmd" value="_xclick">
+                                <input type="hidden" name="business" value="sb-fszdy2724318@business.example.com">
+                                <input type="hidden" name="currency_code" value="MXN">
+                                <input type="hidden" name="item_name" value="Manuelas de Desarrollo">
+                                <input type="hidden" name="amount" value="<%= total %>">
+                                <input type="hidden" name="return" value="http://localhost:3000/confirmarPago">
+                                <input type="submit" class="sbmincart-submit" value="Comprar Ahora">
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+                <br>
+                <div class="col-md-3"></div>
+                <input type="hidden" class="form-control" name="nombre" value="<%= total %>" disabled>
+                <input type="hidden" class="form-control" name="precio" value="<%= ordenArt.precio %>" disabled>
+            </div>
+        
+        </div>
+        
+
+        <br><br>
+  
+  
+    </div>
+ 
+
+<%- include("../layouts/footer.ejs"); %>

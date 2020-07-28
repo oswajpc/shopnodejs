@@ -1,0 +1,42 @@
+<%- include("../layouts/header.ejs"); %>
+
+<div class="new-products">
+  <div class="container">
+    
+    <a href="/agregar" class="btn btn-primary mb-2">Agregar</a>
+    <br>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Precion</th>
+                <th>Descripcion</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% articulo.forEach(articulo => { %>
+            <tr>
+                <td><%= articulo.nombre %></td>
+                <td><%= articulo.precio %></td>
+                <td><%= articulo.descripcion %></td>
+                <td>
+                    <a href="/editar/<%= articulo.idart %>" class="btn btn-warning">
+                        Editar
+                    </a>
+                    <a href="/eliminar/<%= articulo.idart %>" class="btn btn-danger">
+                        Eliminar
+                    </a>
+                </td>
+
+            </tr>
+            <% })%>
+        </tbody>
+    </table>
+
+
+  </div>
+</div>
+
+
+<%- include("../layouts/footer.ejs"); %>

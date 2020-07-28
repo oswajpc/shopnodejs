@@ -1,0 +1,52 @@
+<%- include("../layouts/header.ejs"); %>
+
+<div class="new-products">
+  <div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                <form action="/buscar" method="POST">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-4">
+                        <input type="date" name="fecha_ini" id="fecha_ini" class="form-control">
+                    </div>
+                    <div class="col-md-4">
+                        <input type="date" name="fecha_fin" id="fecha_fin" class="form-control">
+                    </div>
+                    <div class="col-md-2"></div>
+
+                    <button type="submit" class="btn btn-info">Buscar</button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+    <br>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Imagen</th>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Fecha de compra</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% compras.forEach(compras => { %>
+            <tr>
+                <td style="width: 20px;text-align: center;"><img src="<%= compras.imagen %>" alt="<%= compras.nombre %>" style="width: 100px;height: 100px;border-radius: 999px;"></td>
+                <td><%= compras.nombre %></td>
+                <td><%= compras.precio %></td>
+                <td><%= compras.fecha %></td>
+
+            </tr>
+            <% })%>
+        </tbody>
+    </table>
+
+
+  </div>
+</div>
+
+
+<%- include("../layouts/footer.ejs"); %>

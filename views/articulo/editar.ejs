@@ -1,0 +1,39 @@
+<%- include("../layouts/header.ejs"); %>
+
+<div class="new-products">
+  <div class="container">
+    
+    <div class="col-12">
+        <h1>Agregar Producto</h1>
+    
+        <form method="post" action="/actualizar">
+            <input type="hidden" name="idart" value="<%= articulo.idart %>">
+            <div class="form-group">
+                <label for="nombre">Nombre</label>
+                <input required id="nombre1" class="form-control" type="text"
+                    name="nombre1" value="<%= articulo.nombre %>">
+            </div>
+            <div class="form-group">
+                <label for="descripcion">Descripción</label>
+                <input required id="descripcion1" class="form-control" type="text"
+                    name="descripcion1" value="<%= articulo.descripcion %>">
+            </div>
+            <div class="form-group">
+                <label for="precio1">Precio</label>
+                <input required id="precio1" class="form-control" type="text"
+                    name="precio1" value="<%= articulo.precio %>">
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-success">Guardar</button>
+                &nbsp;<a href="/productos" class="btn btn-primary">Volver</a>
+            </div>
+        </form>
+    </div> 
+
+
+  </div>
+</div>
+
+
+<%- include("../layouts/footer.ejs"); %>

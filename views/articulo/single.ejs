@@ -1,0 +1,89 @@
+<%- include("../layouts/header.ejs"); %>
+
+<div class="single">
+    <div class="container">
+        <div class="col-md-4 single-left">
+            <div class="flexslider">
+                <ul class="slides">
+                    <li data-thumb="<%= articulo.imagen %>">
+                       <div class="thumb-image"> <img src="<%= articulo.imagen %>" data-imagezoom="true" class="img-responsive" alt=""> </div>
+                    </li> 
+                </ul>
+            </div>
+            <!-- flexslider -->
+
+            <!-- flexslider -->
+            <!-- zooming-effect -->
+                <script src="js/imagezoom.js"></script>
+            <!-- //zooming-effect -->
+        </div>
+        <div class="col-md-8 single-right">
+            <h3><%= articulo.nomart %></h3>
+
+            <div class="description">
+                <h5><i>Descripción</i></h5>
+                <p><%= articulo.descripcion %></p>
+            </div>
+            <div class="simpleCart_shelfItem">
+                <p><i class="item_price"><%= articulo.precio %></i></p>
+                <form action="/comprar" method="post">
+                    <input type="hidden" name="idarticulo" value="<%= articulo.idart %>">
+                    <input type="hidden" name="nombre" value="<%= articulo.nomart %>"> 
+                    <input type="hidden" name="precio" value="<%= articulo.precio %>"> 
+                    
+                    <button type="submit" class="w3ls-cart">Agregar al carrito</button>
+                </form>
+            </div> 
+        </div>
+        <div class="clearfix"> </div>
+    </div>
+</div> 
+<div class="additional_info">
+    <div class="container">
+        <div class="sap_tabs">	
+            <div id="horizontalTab1" style="display: block; width: 100%; margin: 0px;">
+                <ul>
+                    <li class="resp-tab-item" aria-controls="tab_item-1" role="tab"><span>Comentarios</span></li>
+                </ul>		
+
+
+                    <h4>Comentarios</h4>
+                    <% comentarios.forEach(comentarios => { %>
+                    <div class="additional_info_sub_grids">
+                        <div class="col-xs-10 additional_info_sub_grid_right">
+                            <div class="additional_info_sub_grid_rightl">
+                                <a href="#"><%= comentarios.nombre %></a>
+
+                                <p><%= comentarios.comentario %></p>
+                            </div>
+  
+                            <div class="clearfix"> </div>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                    <% })%>
+                    <div class="review_grids">
+                        <h5>Agrega tu comentario</h5>
+                        <form action="/agregarcoment" method="post">
+                            <input type="hidden" name="idart" value="<%= idart %>">
+                            <textarea name="coment" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Add Your Review';}" required="">Agrega tu comentario</textarea>
+                            <input type="submit" value="Comentar" >
+                        </form>
+                    </div>
+                    					            	      
+            </div>	
+        </div>
+        <script src="js/easyResponsiveTabs.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('#horizontalTab1').easyResponsiveTabs({
+                    type: 'default', //Types: default, vertical, accordion           
+                    width: 'auto', //auto or any width like 600px
+                    fit: true   // 100% fit in a container
+                });
+            });
+        </script>
+    </div>
+</div>
+
+<%- include("../layouts/footer.ejs"); %>
